@@ -1,4 +1,5 @@
 const express = require('express');
+var cors = require('cors');
 var app = express();
 const path = require('path');
 const request = require('request');
@@ -8,6 +9,7 @@ var options = { method: 'GET', url: 'https://api.themoviedb.org/3/movie/upcoming
 qs: { page: '1', language: 'en-US', api_key: '3be2b7f2ab99566767e0b3ee7ffc7a33' }, body: '{}' };
 
 app.use(express.static(path.join(__dirname, 'client/build')))
+app.use(cors())
 
 app.get('/upcomingmovies', (req,res) => {
     console.log('Here comes request in ', req.url)
